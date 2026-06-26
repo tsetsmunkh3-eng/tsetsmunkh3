@@ -1,0 +1,6 @@
+{
+  "name": "Lithos",
+  "description": "An interactive geology hero section featuring a cursor-following spotlight that reveals multi-layered geological history.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
