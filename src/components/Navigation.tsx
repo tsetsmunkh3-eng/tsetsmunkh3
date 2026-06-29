@@ -1,12 +1,16 @@
 import { useState } from 'react';
-import { Menu, X, Globe, Map, Sparkles, BookOpen, User } from 'lucide-react';
+import { Menu, X, Globe, Map, Sparkles, BookOpen, User, Trophy } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-export default function Navigation() {
+interface NavigationProps {
+  onOpenIdolChat: () => void;
+}
+
+export default function Navigation({ onOpenIdolChat }: NavigationProps) {
   const [activeTab, setActiveTab] = useState('Course');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navItems = ['Course', 'Field Guides', 'Geology', 'Plans', 'Live Tour'];
+  const navItems = ['Course', 'Field Guides', 'Geology', 'Plans', 'Live Tour', '🤖 My Idol'];
 
   return (
     <>
@@ -38,7 +42,13 @@ export default function Navigation() {
               <button
                 key={item}
                 id={`nav-item-${item.toLowerCase().replace(' ', '-')}`}
-                onClick={() => setActiveTab(item)}
+                onClick={() => {
+                  if (item === '🤖 My Idol') {
+                    onOpenIdolChat();
+                  } else {
+                    setActiveTab(item);
+                  }
+                }}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all relative ${
                   isActive
                     ? 'text-white'
@@ -100,6 +110,7 @@ export default function Navigation() {
                   item === 'Field Guides' ? Map :
                   item === 'Geology' ? Globe :
                   item === 'Plans' ? Sparkles :
+                  item === '🤖 My Idol' ? Trophy :
                   Globe;
 
                 return (
@@ -110,7 +121,11 @@ export default function Navigation() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
                     onClick={() => {
-                      setActiveTab(item);
+                      if (item === '🤖 My Idol') {
+                        onOpenIdolChat();
+                      } else {
+                        setActiveTab(item);
+                      }
                       setMobileMenuOpen(false);
                     }}
                     className={`flex items-center gap-3.5 px-4 py-3 rounded-xl text-left font-medium transition-all ${

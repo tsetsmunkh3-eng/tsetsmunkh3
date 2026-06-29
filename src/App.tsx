@@ -14,6 +14,8 @@ import RevealLayer from './components/RevealLayer';
 import HeroContent from './components/HeroContent';
 import TsetsmunkhProfile from './components/TsetsmunkhProfile';
 import ExplorerSection from './components/ExplorerSection';
+import IdolChat from './components/IdolChat';
+import MeChat from './components/MeChat';
 
 // Asset URLs exactly as specified
 const BG_IMAGE_1 = 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260609_195923_b0ba8ace-1d1d-4f2c-9a28-1ab84b330680.png&w=1280&q=85';
@@ -27,6 +29,9 @@ export default function App() {
 
   // State to track cursor position
   const [cursorPos, setCursorPos] = useState({ x: -999, y: -999 });
+
+  // State for AI chatbots
+  const [isIdolChatOpen, setIsIdolChatOpen] = useState(false);
 
   useEffect(() => {
     // Mouse listener
@@ -96,7 +101,7 @@ export default function App() {
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
       {/* Premium Fixed Top Navigation bar */}
-      <Navigation />
+      <Navigation onOpenIdolChat={() => setIsIdolChatOpen(true)} />
 
       {/* Main Hero Section */}
       <section
@@ -151,6 +156,10 @@ export default function App() {
 
       {/* Interactive Explorer profile modal */}
       <TsetsmunkhProfile />
+
+      {/* Interactive Chat Dialogs */}
+      <IdolChat isOpen={isIdolChatOpen} onClose={() => setIsIdolChatOpen(false)} />
+      <MeChat />
     </div>
   );
 }
