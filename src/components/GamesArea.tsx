@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Trophy, Flame, Heart, Timer, RotateCcw, Play, CheckCircle2, AlertTriangle, Sparkles, HelpCircle, Gamepad2, Compass } from 'lucide-react';
+import { Trophy, Flame, Heart, Timer, RotateCcw, Play, CheckCircle2, AlertTriangle, Sparkles, HelpCircle, Gamepad2, Compass, ArrowRight } from 'lucide-react';
 
 // Web Audio API Synthesizer for high-quality, lightweight arcade game sound effects
 function playSound(type: 'ding' | 'buzz' | 'swish' | 'brick') {
@@ -105,6 +105,8 @@ interface Question {
   emojis?: string;
   answer: string;
   options: string[];
+  image?: string;
+  video?: string;
 }
 
 const ANIME_TRIVIA_QUESTIONS: Question[] = [
@@ -113,70 +115,90 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     questionMN: "Naruto анимэний гол дүрийн хамгийн дуртай хоол юу вэ?",
     questionEN: "What is Naruto's favorite food in the Naruto anime?",
     options: ["Суши (Sushi)", "Рамэн (Ramen)", "Бургер (Burger)", "Такояки (Takoyaki)"],
-    answer: "Рамэн (Ramen)"
+    answer: "Рамэн (Ramen)",
+    image: "https://static.wikia.nocookie.net/ultimatepopculture/images/a/a3/Naruto-clipart-naruto-storm-3-693905-2403022_%281%29.png/revision/latest?cb=20190612051609",
+    video: "2duK6O8uGk4"
   },
   {
     id: 2,
     questionMN: "One Piece анимэний гол дүр Luffy ямар чөтгөрийн жимс идсэн бэ?",
     questionEN: "Which Devil Fruit did Luffy eat in One Piece?",
     options: ["Mera Mera no Mi", "Gomu Gomu no Mi", "Ope Ope no Mi", "Hito Hito no Mi"],
-    answer: "Gomu Gomu no Mi"
+    answer: "Gomu Gomu no Mi",
+    image: "https://m.media-amazon.com/images/S/pv-target-images/1595dc2f5bd3654d3d263b4fce60780b118bb31ee3af7a9dc9c99f89ba415934._SX1080_FMjpg_.jpg",
+    video: "M10XW0S_qZ0"
   },
   {
     id: 3,
     questionMN: "Demon Slayer анимэний гол дүрийг хэн гэдэг вэ?",
     questionEN: "What is the name of the main character in Demon Slayer?",
     options: ["Tanjiro Kamado", "Zenitsu Agatsuma", "Inosuke Hashibira", "Nezuko Kamado"],
-    answer: "Tanjiro Kamado"
+    answer: "Tanjiro Kamado",
+    image: "https://storage.ghost.io/c/2b/7f/2b7f69fc-a243-4d2f-ae8e-db8312c6653a/content/images/size/w1200/2025/10/Demon-Slayer-en-421-c-1.png",
+    video: "pX899gZpBf8"
   },
   {
     id: 4,
     questionMN: "Death Note анимэний гол дүр Light Yagami-ийн үхлийн бурхан (Shinigami)-ийг хэн гэдэг вэ?",
     questionEN: "What is the name of Light Yagami's Shinigami in Death Note?",
     options: ["Rem", "Ryuk", "Sidoh", "Gelus"],
-    answer: "Ryuk"
+    answer: "Ryuk",
+    image: "https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=600&auto=format&fit=crop",
+    video: "XdJj9nFdfW0"
   },
   {
     id: 5,
     questionMN: "Dragon Ball анимэний гол дүрийн Саяан (Saiyan) баатрыг хэн гэдэг вэ?",
     questionEN: "Who is the main Saiyan hero of Dragon Ball?",
     options: ["Vegeta", "Gohan", "Goku", "Trunks"],
-    answer: "Goku"
+    answer: "Goku",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd5BcDY3Z4RJQgKh7s0_X-wDhlhL-7ofLfrD-oWudcvQ&s=10",
+    video: "O7L_A6K7_L4"
   },
   {
     id: 6,
     questionMN: "Attack on Titan анимэний гол дүр Eren Yeager анх ямар титан болж хувирдаг вэ?",
     questionEN: "What titan does Eren Yeager transform into in Attack on Titan?",
     options: ["Colossal Titan", "Attack Titan", "Armored Titan", "Beast Titan"],
-    answer: "Attack Titan"
+    answer: "Attack Titan",
+    image: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=600&auto=format&fit=crop",
+    video: "8OkpRKIP344"
   },
   {
     id: 7,
     questionMN: "Jujutsu Kaisen анимэний хамгийн хүчирхэг хараалч (Sorcerer)-ийг хэн гэдэг вэ?",
     questionEN: "Who is the strongest sorcerer in Jujutsu Kaisen?",
     options: ["Yuji Itadori", "Megumi Fushiguro", "Satoru Gojo", "Kento Nanami"],
-    answer: "Satoru Gojo"
+    answer: "Satoru Gojo",
+    image: "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=600&auto=format&fit=crop",
+    video: "1t_SMLIymSg"
   },
   {
     id: 8,
     questionMN: "Spirited Away анимэ киног найруулсан алдарт найруулагч хэн бэ?",
     questionEN: "Who directed the legendary anime movie Spirited Away?",
     options: ["Makoto Shinkai", "Hayao Miyazaki", "Mamoru Hosoda", "Satoshi Kon"],
-    answer: "Hayao Miyazaki"
+    answer: "Hayao Miyazaki",
+    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=600&auto=format&fit=crop",
+    video: "ByXuk9QqQkk"
   },
   {
     id: 9,
     questionMN: "My Hero Academia анимэний гол дүр Midoriya-ийн баатарлаг чадвар (Quirk) юу вэ?",
     questionEN: "What is the quirk of Midoriya in My Hero Academia?",
     options: ["One For All", "All For One", "Explosion", "Half-Cold Half-Hot"],
-    answer: "One For All"
+    answer: "One For All",
+    image: "https://images.unsplash.com/photo-1620336655055-088d06e36bf0?q=80&w=600&auto=format&fit=crop",
+    video: "yM7Uv_oD9ic"
   },
   {
     id: 10,
     questionMN: "Hunter x Hunter анимэний гол дүр Gon-ийн хамгийн сайн найз хэн бэ?",
     questionEN: "Who is the best friend of Gon in Hunter x Hunter?",
     options: ["Kurapika", "Killua Zoldyck", "Leorio", "Hisoka"],
-    answer: "Killua Zoldyck"
+    answer: "Killua Zoldyck",
+    image: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=600&auto=format&fit=crop",
+    video: "faqmNMaz_S0"
   }
 ];
 
@@ -185,61 +207,81 @@ const FALLBACK_QUESTIONS: Question[] = [
     id: 1,
     emojis: "🦊🍥🍜🥋⚡",
     answer: "Naruto",
-    options: ["My Hero Academia", "Naruto", "Dragon Ball", "Jujutsu Kaisen"]
+    options: ["My Hero Academia", "Naruto", "Dragon Ball", "Jujutsu Kaisen"],
+    image: "https://static.wikia.nocookie.net/ultimatepopculture/images/a/a3/Naruto-clipart-naruto-storm-3-693905-2403022_%281%29.png/revision/latest?cb=20190612051609",
+    video: "2duK6O8uGk4"
   },
   {
     id: 2,
     emojis: "🏴‍☠️👒🍖🌊⚔️",
     answer: "One Piece",
-    options: ["One Piece", "Attack on Titan", "Hunter x Hunter", "Fairy Tail"]
+    options: ["One Piece", "Attack on Titan", "Hunter x Hunter", "Fairy Tail"],
+    image: "https://m.media-amazon.com/images/S/pv-target-images/1595dc2f5bd3654d3d263b4fce60780b118bb31ee3af7a9dc9c99f89ba415934._SX1080_FMjpg_.jpg",
+    video: "M10XW0S_qZ0"
   },
   {
     id: 3,
     emojis: "👹⚔️🐗⚡🌸",
     answer: "Demon Slayer",
-    options: ["Bleach", "Demon Slayer", "Inuyasha", "Jujutsu Kaisen"]
+    options: ["Bleach", "Demon Slayer", "Inuyasha", "Jujutsu Kaisen"],
+    image: "https://storage.ghost.io/c/2b/7f/2b7f69fc-a243-4d2f-ae8e-db8312c6653a/content/images/size/w1200/2025/10/Demon-Slayer-en-421-c-1.png",
+    video: "pX899gZpBf8"
   },
   {
     id: 4,
     emojis: "📓🍎🕵️‍♂️💀📓",
     answer: "Death Note",
-    options: ["Code Geass", "Monster", "Death Note", "Tokyo Ghoul"]
+    options: ["Code Geass", "Monster", "Death Note", "Tokyo Ghoul"],
+    image: "https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=600&auto=format&fit=crop",
+    video: "XdJj9nFdfW0"
   },
   {
     id: 5,
     emojis: "☄️🐒🥋🟡🐉",
     answer: "Dragon Ball",
-    options: ["Dragon Ball", "Naruto", "One Punch Man", "Yu-Gi-Oh!"]
+    options: ["Dragon Ball", "Naruto", "One Punch Man", "Yu-Gi-Oh!"],
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd5BcDY3Z4RJQgKh7s0_X-wDhlhL-7ofLfrD-oWudcvQ&s=10",
+    video: "O7L_A6K7_L4"
   },
   {
     id: 6,
     emojis: "🧱🦖🗡️🩸🕊️",
     answer: "Attack on Titan",
-    options: ["Fullmetal Alchemist", "Attack on Titan", "Neon Genesis Evangelion", "Vinland Saga"]
+    options: ["Fullmetal Alchemist", "Attack on Titan", "Neon Genesis Evangelion", "Vinland Saga"],
+    image: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=600&auto=format&fit=crop",
+    video: "8OkpRKIP344"
   },
   {
     id: 7,
     emojis: "🏫🦸‍♂️💥🥦🔥",
     answer: "My Hero Academia",
-    options: ["Assassination Classroom", "Mob Psycho 100", "My Hero Academia", "Black Clover"]
+    options: ["Assassination Classroom", "Mob Psycho 100", "My Hero Academia", "Black Clover"],
+    image: "https://images.unsplash.com/photo-1620336655055-088d06e36bf0?q=80&w=600&auto=format&fit=crop",
+    video: "yM7Uv_oD9ic"
   },
   {
     id: 8,
     emojis: "🤞🕶️😈🏫📿",
     answer: "Jujutsu Kaisen",
-    options: ["Jujutsu Kaisen", "Chainsaw Man", "Bleach", "Tokyo Ghoul"]
+    options: ["Jujutsu Kaisen", "Chainsaw Man", "Bleach", "Tokyo Ghoul"],
+    image: "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=600&auto=format&fit=crop",
+    video: "1t_SMLIymSg"
   },
   {
     id: 9,
     emojis: "🎣⚡🐜🃏🎲",
     answer: "Hunter x Hunter",
-    options: ["Yu Yu Hakusho", "Hunter x Hunter", "One Piece", "Fairy Tail"]
+    options: ["Yu Yu Hakusho", "Hunter x Hunter", "One Piece", "Fairy Tail"],
+    image: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=600&auto=format&fit=crop",
+    video: "faqmNMaz_S0"
   },
   {
     id: 10,
     emojis: "🐖🐉🐉⛩️♨️",
     answer: "Spirited Away",
-    options: ["My Neighbor Totoro", "Howl's Moving Castle", "Princess Mononoke", "Spirited Away"]
+    options: ["My Neighbor Totoro", "Howl's Moving Castle", "Princess Mononoke", "Spirited Away"],
+    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=600&auto=format&fit=crop",
+    video: "ByXuk9QqQkk"
   }
 ];
 
@@ -278,6 +320,7 @@ export default function GamesArea() {
   const [highScore, setHighScore] = useState(0);
   const [emojiHighScore, setEmojiHighScore] = useState(0);
   const [showBonusNotification, setShowBonusNotification] = useState(false);
+  const [showReveal, setShowReveal] = useState(false);
 
   // Basketball Mini Game States (Bonus sport themed game matching Tsetsmunkh's hobbies!)
   const [bbScore, setBbScore] = useState(0);
@@ -366,6 +409,7 @@ export default function GamesArea() {
     setSelectedAnswer(null);
     setIsCorrect(null);
     setShowBonusNotification(false);
+    setShowReveal(false);
   };
 
   const handleAnswerSelect = (option: string) => {
@@ -383,26 +427,16 @@ export default function GamesArea() {
       const nextStreak = streak + 1;
       setStreak(nextStreak);
       let pointsGained = 10;
-      let gotBonus = false;
 
       // Rule: 3 correct answers in a row gives bonus +20 points
       if (nextStreak % 3 === 0) {
         pointsGained += 20;
-        gotBonus = true;
         setShowBonusNotification(true);
         setTimeout(() => setShowBonusNotification(false), 2000);
       }
 
       setScore((prev) => prev + pointsGained);
-
-      setTimeout(() => {
-        if (currentQIdx === activeList.length - 1) {
-          setGameState('victory');
-          updateAnimeHighScore(score + pointsGained);
-        } else {
-          goToNextQuestion();
-        }
-      }, 1500);
+      setShowReveal(true);
     } else {
       playSound('buzz');
       setStreak(0);
@@ -425,6 +459,19 @@ export default function GamesArea() {
     setSelectedAnswer(null);
     setIsCorrect(null);
     setTimeLeft(15);
+    setShowReveal(false);
+  };
+
+  const handleNextClick = () => {
+    const activeList = getActiveQuestionsList();
+    if (currentQIdx === activeList.length - 1) {
+      setGameState('victory');
+      const finalScore = score;
+      updateAnimeHighScore(finalScore);
+      setShowReveal(false);
+    } else {
+      goToNextQuestion();
+    }
   };
 
   // Basketball micro game logic
@@ -892,6 +939,66 @@ export default function GamesArea() {
                             );
                           })}
                         </div>
+
+                        {/* Beautiful Media Reveal Panel for correct answers */}
+                        {showReveal && (
+                          <motion.div
+                            id="anime-media-reveal"
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mt-6 p-5 sm:p-6 bg-zinc-950 border-2 border-emerald-500/30 rounded-2xl space-y-5"
+                          >
+                            <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
+                              <div className="flex items-center gap-2 text-emerald-400 font-bold text-xs sm:text-sm">
+                                <Sparkles size={16} className="animate-pulse" />
+                                <span className="uppercase tracking-wider">
+                                  {lang === 'mn' ? 'Зөв хариуллаа! 🎉' : 'Correct Answer! 🎉'}
+                                </span>
+                              </div>
+                              <span className="text-[10px] sm:text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2.5 py-0.5 rounded-full">
+                                {activeList[currentQIdx]?.answer}
+                              </span>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+                              {/* Anime High Quality Image */}
+                              {activeList[currentQIdx]?.image && (
+                                <div className="relative rounded-xl overflow-hidden border border-zinc-800 shadow-md aspect-video h-full min-h-[140px] bg-zinc-900 flex items-center justify-center">
+                                  <img
+                                    src={activeList[currentQIdx].image}
+                                    alt={activeList[currentQIdx].answer}
+                                    referrerPolicy="no-referrer"
+                                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                                  />
+                                </div>
+                              )}
+
+                              {/* YouTube Video iframe */}
+                              {activeList[currentQIdx]?.video && (
+                                <div className="relative rounded-xl overflow-hidden border border-zinc-800 shadow-md aspect-video h-full min-h-[140px] bg-zinc-900">
+                                  <iframe
+                                    src={`https://www.youtube.com/embed/${activeList[currentQIdx].video}`}
+                                    title="Anime Video Trailer/OST"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    className="absolute inset-0 w-full h-full border-0"
+                                  />
+                                </div>
+                              )}
+                            </div>
+
+                            <div className="flex justify-end pt-3 border-t border-zinc-900">
+                              <button
+                                id="btn-reveal-next"
+                                onClick={handleNextClick}
+                                className="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-green-600 hover:to-emerald-500 text-white font-bold rounded-xl text-xs sm:text-sm transition-all duration-300 shadow-lg shadow-emerald-500/10 hover:shadow-emerald-500/25 flex items-center gap-1.5 cursor-pointer active:scale-95"
+                              >
+                                <span>{lang === 'mn' ? 'Дараагийн асуулт' : 'Next Question'}</span>
+                                <ArrowRight size={14} />
+                              </button>
+                            </div>
+                          </motion.div>
+                        )}
                       </motion.div>
                     </AnimatePresence>
 

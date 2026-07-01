@@ -3,60 +3,80 @@
     "id": 1,
     "emojis": "🦊🍥🍜🥋⚡",
     "answer": "Naruto",
-    "options": ["My Hero Academia", "Naruto", "Dragon Ball", "Jujutsu Kaisen"]
+    "options": ["My Hero Academia", "Naruto", "Dragon Ball", "Jujutsu Kaisen"],
+    "image": "https://static.wikia.nocookie.net/ultimatepopculture/images/a/a3/Naruto-clipart-naruto-storm-3-693905-2403022_%281%29.png/revision/latest?cb=20190612051609",
+    "video": "2duK6O8uGk4"
   },
   {
     "id": 2,
     "emojis": "🏴‍☠️👒🍖🌊⚔️",
     "answer": "One Piece",
-    "options": ["One Piece", "Attack on Titan", "Hunter x Hunter", "Fairy Tail"]
+    "options": ["One Piece", "Attack on Titan", "Hunter x Hunter", "Fairy Tail"],
+    "image": "https://m.media-amazon.com/images/S/pv-target-images/1595dc2f5bd3654d3d263b4fce60780b118bb31ee3af7a9dc9c99f89ba415934._SX1080_FMjpg_.jpg",
+    "video": "M10XW0S_qZ0"
   },
   {
     "id": 3,
     "emojis": "👹⚔️🐗⚡🌸",
     "answer": "Demon Slayer",
-    "options": ["Bleach", "Demon Slayer", "Inuyasha", "Jujutsu Kaisen"]
+    "options": ["Bleach", "Demon Slayer", "Inuyasha", "Jujutsu Kaisen"],
+    "image": "https://storage.ghost.io/c/2b/7f/2b7f69fc-a243-4d2f-ae8e-db8312c6653a/content/images/size/w1200/2025/10/Demon-Slayer-en-421-c-1.png",
+    "video": "pX899gZpBf8"
   },
   {
     "id": 4,
     "emojis": "📓🍎🕵️‍♂️💀📓",
     "answer": "Death Note",
-    "options": ["Code Geass", "Monster", "Death Note", "Tokyo Ghoul"]
+    "options": ["Code Geass", "Monster", "Death Note", "Tokyo Ghoul"],
+    "image": "https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=600&auto=format&fit=crop",
+    "video": "XdJj9nFdfW0"
   },
   {
     "id": 5,
     "emojis": "☄️🐒🥋🟡🐉",
     "answer": "Dragon Ball",
-    "options": ["Dragon Ball", "Naruto", "One Punch Man", "Yu-Gi-Oh!"]
+    "options": ["Dragon Ball", "Naruto", "One Punch Man", "Yu-Gi-Oh!"],
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd5BcDY3Z4RJQgKh7s0_X-wDhlhL-7ofLfrD-oWudcvQ&s=10",
+    "video": "O7L_A6K7_L4"
   },
   {
     "id": 6,
     "emojis": "🧱🦖🗡️🩸🕊️",
     "answer": "Attack on Titan",
-    "options": ["Fullmetal Alchemist", "Attack on Titan", "Neon Genesis Evangelion", "Vinland Saga"]
+    "options": ["Fullmetal Alchemist", "Attack on Titan", "Neon Genesis Evangelion", "Vinland Saga"],
+    "image": "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=600&auto=format&fit=crop",
+    "video": "8OkpRKIP344"
   },
   {
     "id": 7,
     "emojis": "🏫🦸‍♂️💥🥦🔥",
     "answer": "My Hero Academia",
-    "options": ["Assassination Classroom", "Mob Psycho 100", "My Hero Academia", "Black Clover"]
+    "options": ["Assassination Classroom", "Mob Psycho 100", "My Hero Academia", "Black Clover"],
+    "image": "https://images.unsplash.com/photo-1620336655055-088d06e36bf0?q=80&w=600&auto=format&fit=crop",
+    "video": "yM7Uv_oD9ic"
   },
   {
     "id": 8,
     "emojis": "🤞🕶️😈🏫📿",
     "answer": "Jujutsu Kaisen",
-    "options": ["Jujutsu Kaisen", "Chainsaw Man", "Bleach", "Tokyo Ghoul"]
+    "options": ["Jujutsu Kaisen", "Chainsaw Man", "Bleach", "Tokyo Ghoul"],
+    "image": "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=600&auto=format&fit=crop",
+    "video": "1t_SMLIymSg"
   },
   {
     "id": 9,
     "emojis": "🎣⚡🐜🃏🎲",
     "answer": "Hunter x Hunter",
-    "options": ["Yu Yu Hakusho", "Hunter x Hunter", "One Piece", "Fairy Tail"]
+    "options": ["Yu Yu Hakusho", "Hunter x Hunter", "One Piece", "Fairy Tail"],
+    "image": "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=600&auto=format&fit=crop",
+    "video": "faqmNMaz_S0"
   },
   {
     "id": 10,
     "emojis": "🐖🐉🐉⛩️♨️",
     "answer": "Spirited Away",
-    "options": ["My Neighbor Totoro", "Howl's Moving Castle", "Princess Mononoke", "Spirited Away"]
+    "options": ["My Neighbor Totoro", "Howl's Moving Castle", "Princess Mononoke", "Spirited Away"],
+    "image": "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=600&auto=format&fit=crop",
+    "video": "ByXuk9QqQkk"
   }
 ]
