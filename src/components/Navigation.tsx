@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, Globe, Map, Sparkles, BookOpen, User, Trophy } from 'lucide-react';
+import { Menu, X, Globe, Map, Sparkles, BookOpen, User, Trophy, Gamepad2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface NavigationProps {
@@ -10,13 +10,13 @@ export default function Navigation({ onOpenIdolChat }: NavigationProps) {
   const [activeTab, setActiveTab] = useState('Course');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navItems = ['Course', 'Field Guides', 'Geology', 'Plans', 'Live Tour', '🤖 My Idol'];
+  const navItems = ['Course', 'Field Guides', 'Geology', 'Plans', 'Live Tour', '🎮 Games', '🤖 My Idol'];
 
   return (
     <>
       <nav id="main-navigation" className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between p-6 bg-gradient-to-b from-black/60 to-transparent">
         {/* Left Side: Logo & Wordmark */}
-        <div id="nav-brand-logo" className="flex items-center gap-2.5 select-none group cursor-pointer">
+        <div id="nav-brand-logo" className="flex items-center gap-2.5 select-none group cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <svg
             width="26"
             height="26"
@@ -45,8 +45,12 @@ export default function Navigation({ onOpenIdolChat }: NavigationProps) {
                 onClick={() => {
                   if (item === '🤖 My Idol') {
                     onOpenIdolChat();
+                  } else if (item === '🎮 Games') {
+                    setActiveTab(item);
+                    document.getElementById('lithos-games-section')?.scrollIntoView({ behavior: 'smooth' });
                   } else {
                     setActiveTab(item);
+                    document.getElementById('lithos-explorer-section')?.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
                 className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all relative ${
@@ -110,6 +114,7 @@ export default function Navigation({ onOpenIdolChat }: NavigationProps) {
                   item === 'Field Guides' ? Map :
                   item === 'Geology' ? Globe :
                   item === 'Plans' ? Sparkles :
+                  item === '🎮 Games' ? Gamepad2 :
                   item === '🤖 My Idol' ? Trophy :
                   Globe;
 
@@ -123,8 +128,12 @@ export default function Navigation({ onOpenIdolChat }: NavigationProps) {
                     onClick={() => {
                       if (item === '🤖 My Idol') {
                         onOpenIdolChat();
+                      } else if (item === '🎮 Games') {
+                        setActiveTab(item);
+                        document.getElementById('lithos-games-section')?.scrollIntoView({ behavior: 'smooth' });
                       } else {
                         setActiveTab(item);
+                        document.getElementById('lithos-explorer-section')?.scrollIntoView({ behavior: 'smooth' });
                       }
                       setMobileMenuOpen(false);
                     }}

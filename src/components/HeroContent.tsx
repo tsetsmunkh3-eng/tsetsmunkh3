@@ -59,6 +59,7 @@ export default function HeroContent() {
         </p>
         <button
           id="hero-btn-start-digging"
+          onClick={() => document.getElementById('lithos-explorer-section')?.scrollIntoView({ behavior: 'smooth' })}
           className="group flex items-center gap-2 bg-[#e8702a] hover:bg-[#d2611f] text-white text-sm font-medium px-8 py-3.5 rounded-full transition-all hover:scale-[1.03] active:scale-95 shadow-lg shadow-[#e8702a]/20 cursor-pointer"
         >
           <span>Start Digging</span>

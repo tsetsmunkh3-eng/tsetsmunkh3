@@ -1,6 +1,6 @@
 {
   "name": "Lithos",
-  "description": "An interactive geology hero section featuring a cursor-following spotlight that reveals multi-layered geological history.",
+  "description": "An interactive geology hero section featuring a cursor-following spotlight, AI chatbot assistants, and an interactive Games Area with Anime Guesser and Basketball Shootout.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

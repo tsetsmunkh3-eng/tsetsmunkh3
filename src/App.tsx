@@ -14,6 +14,7 @@ import RevealLayer from './components/RevealLayer';
 import HeroContent from './components/HeroContent';
 import TsetsmunkhProfile from './components/TsetsmunkhProfile';
 import ExplorerSection from './components/ExplorerSection';
+import GamesArea from './components/GamesArea';
 import IdolChat from './components/IdolChat';
 import MeChat from './components/MeChat';
 
@@ -153,6 +154,9 @@ export default function App() {
 
       {/* Explorer spotlight section directly on the main page */}
       <ExplorerSection />
+
+      {/* Games list / arcade area */}
+      <GamesArea />
 
       {/* Interactive Explorer profile modal */}
       <TsetsmunkhProfile />
