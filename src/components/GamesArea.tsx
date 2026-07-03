@@ -116,7 +116,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     questionEN: "What is Naruto's favorite food in the Naruto anime?",
     options: ["Суши (Sushi)", "Рамэн (Ramen)", "Бургер (Burger)", "Такояки (Takoyaki)"],
     answer: "Рамэн (Ramen)",
-    image: "https://static.wikia.nocookie.net/ultimatepopculture/images/a/a3/Naruto-clipart-naruto-storm-3-693905-2403022_%281%29.png/revision/latest?cb=20190612051609",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQqd74f9BY40VnFFdvzQCOTxE-m3SeqS81BGXm2BsHQw&s=10",
     video: "2duK6O8uGk4"
   },
   {
@@ -143,7 +143,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     questionEN: "What is the name of Light Yagami's Shinigami in Death Note?",
     options: ["Rem", "Ryuk", "Sidoh", "Gelus"],
     answer: "Ryuk",
-    image: "https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1bKYCuQ_o9NhMb-rS9eW-8dnYCB4-DmH_hRhABa5-Cg&s=10",
     video: "XdJj9nFdfW0"
   },
   {
@@ -161,7 +161,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     questionEN: "What titan does Eren Yeager transform into in Attack on Titan?",
     options: ["Colossal Titan", "Attack Titan", "Armored Titan", "Beast Titan"],
     answer: "Attack Titan",
-    image: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5dcxR3i6uybbb6m0fEV2F74NJv-eX42t08XxZ0dDqiw&s=10",
     video: "8OkpRKIP344"
   },
   {
@@ -170,7 +170,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     questionEN: "Who is the strongest sorcerer in Jujutsu Kaisen?",
     options: ["Yuji Itadori", "Megumi Fushiguro", "Satoru Gojo", "Kento Nanami"],
     answer: "Satoru Gojo",
-    image: "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzDlw5A217c10ne53n7I2-B8i01gWUZArc_vqGDXDwcg&s=10",
     video: "1t_SMLIymSg"
   },
   {
@@ -179,7 +179,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     questionEN: "Who directed the legendary anime movie Spirited Away?",
     options: ["Makoto Shinkai", "Hayao Miyazaki", "Mamoru Hosoda", "Satoshi Kon"],
     answer: "Hayao Miyazaki",
-    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKr83uM8RZl2Hkh_e6Mk-4kgdScnv5X78K2RrzZ0WN-Q&s=10",
     video: "ByXuk9QqQkk"
   },
   {
@@ -188,7 +188,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     questionEN: "What is the quirk of Midoriya in My Hero Academia?",
     options: ["One For All", "All For One", "Explosion", "Half-Cold Half-Hot"],
     answer: "One For All",
-    image: "https://images.unsplash.com/photo-1620336655055-088d06e36bf0?q=80&w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6R4qbLGU03ze2Tu1URPSqcklZGeQoZ7YJBKxPJPb4mA&s=10",
     video: "yM7Uv_oD9ic"
   },
   {
@@ -197,7 +197,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     questionEN: "Who is the best friend of Gon in Hunter x Hunter?",
     options: ["Kurapika", "Killua Zoldyck", "Leorio", "Hisoka"],
     answer: "Killua Zoldyck",
-    image: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Q9ewOIKkv8ncSRTEU9vZXZYr_RNP1iKJCINdo9jKJw&s=10",
     video: "faqmNMaz_S0"
   }
 ];
@@ -208,7 +208,7 @@ const FALLBACK_QUESTIONS: Question[] = [
     emojis: "🦊🍥🍜🥋⚡",
     answer: "Naruto",
     options: ["My Hero Academia", "Naruto", "Dragon Ball", "Jujutsu Kaisen"],
-    image: "https://static.wikia.nocookie.net/ultimatepopculture/images/a/a3/Naruto-clipart-naruto-storm-3-693905-2403022_%281%29.png/revision/latest?cb=20190612051609",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQqd74f9BY40VnFFdvzQCOTxE-m3SeqS81BGXm2BsHQw&s=10",
     video: "2duK6O8uGk4"
   },
   {
@@ -232,7 +232,7 @@ const FALLBACK_QUESTIONS: Question[] = [
     emojis: "📓🍎🕵️‍♂️💀📓",
     answer: "Death Note",
     options: ["Code Geass", "Monster", "Death Note", "Tokyo Ghoul"],
-    image: "https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1bKYCuQ_o9NhMb-rS9eW-8dnYCB4-DmH_hRhABa5-Cg&s=10",
     video: "XdJj9nFdfW0"
   },
   {
@@ -248,7 +248,7 @@ const FALLBACK_QUESTIONS: Question[] = [
     emojis: "🧱🦖🗡️🩸🕊️",
     answer: "Attack on Titan",
     options: ["Fullmetal Alchemist", "Attack on Titan", "Neon Genesis Evangelion", "Vinland Saga"],
-    image: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5dcxR3i6uybbb6m0fEV2F74NJv-eX42t08XxZ0dDqiw&s=10",
     video: "8OkpRKIP344"
   },
   {
@@ -256,7 +256,7 @@ const FALLBACK_QUESTIONS: Question[] = [
     emojis: "🏫🦸‍♂️💥🥦🔥",
     answer: "My Hero Academia",
     options: ["Assassination Classroom", "Mob Psycho 100", "My Hero Academia", "Black Clover"],
-    image: "https://images.unsplash.com/photo-1620336655055-088d06e36bf0?q=80&w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6R4qbLGU03ze2Tu1URPSqcklZGeQoZ7YJBKxPJPb4mA&s=10",
     video: "yM7Uv_oD9ic"
   },
   {
@@ -264,7 +264,7 @@ const FALLBACK_QUESTIONS: Question[] = [
     emojis: "🤞🕶️😈🏫📿",
     answer: "Jujutsu Kaisen",
     options: ["Jujutsu Kaisen", "Chainsaw Man", "Bleach", "Tokyo Ghoul"],
-    image: "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzDlw5A217c10ne53n7I2-B8i01gWUZArc_vqGDXDwcg&s=10",
     video: "1t_SMLIymSg"
   },
   {
@@ -272,7 +272,7 @@ const FALLBACK_QUESTIONS: Question[] = [
     emojis: "🎣⚡🐜🃏🎲",
     answer: "Hunter x Hunter",
     options: ["Yu Yu Hakusho", "Hunter x Hunter", "One Piece", "Fairy Tail"],
-    image: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Q9ewOIKkv8ncSRTEU9vZXZYr_RNP1iKJCINdo9jKJw&s=10",
     video: "faqmNMaz_S0"
   },
   {
@@ -280,7 +280,7 @@ const FALLBACK_QUESTIONS: Question[] = [
     emojis: "🐖🐉🐉⛩️♨️",
     answer: "Spirited Away",
     options: ["My Neighbor Totoro", "Howl's Moving Castle", "Princess Mononoke", "Spirited Away"],
-    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKr83uM8RZl2Hkh_e6Mk-4kgdScnv5X78K2RrzZ0WN-Q&s=10",
     video: "ByXuk9QqQkk"
   }
 ];
