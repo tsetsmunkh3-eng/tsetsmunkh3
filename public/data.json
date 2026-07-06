@@ -1,82 +1,152 @@
 [
   {
     "id": 1,
+    "type": "emoji",
     "emojis": "🦊🍥🍜🥋⚡",
     "answer": "Naruto",
     "options": ["My Hero Academia", "Naruto", "Dragon Ball", "Jujutsu Kaisen"],
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQqd74f9BY40VnFFdvzQCOTxE-m3SeqS81BGXm2BsHQw&s=10",
-    "video": "2duK6O8uGk4"
+    "video": "https://www.youtube.com/watch?v=uog0drUjg9U"
   },
   {
     "id": 2,
+    "type": "emoji",
     "emojis": "🏴‍☠️👒🍖🌊⚔️",
     "answer": "One Piece",
     "options": ["One Piece", "Attack on Titan", "Hunter x Hunter", "Fairy Tail"],
     "image": "https://m.media-amazon.com/images/S/pv-target-images/1595dc2f5bd3654d3d263b4fce60780b118bb31ee3af7a9dc9c99f89ba415934._SX1080_FMjpg_.jpg",
-    "video": "M10XW0S_qZ0"
+    "video": "https://www.youtube.com/watch?v=3Gmo0EXHyKg"
   },
   {
     "id": 3,
+    "type": "emoji",
     "emojis": "👹⚔️🐗⚡🌸",
     "answer": "Demon Slayer",
     "options": ["Bleach", "Demon Slayer", "Inuyasha", "Jujutsu Kaisen"],
     "image": "https://storage.ghost.io/c/2b/7f/2b7f69fc-a243-4d2f-ae8e-db8312c6653a/content/images/size/w1200/2025/10/Demon-Slayer-en-421-c-1.png",
-    "video": "pX899gZpBf8"
+    "video": "https://www.youtube.com/watch?v=x7uLutVRBfI"
   },
   {
     "id": 4,
+    "type": "emoji",
     "emojis": "📓🍎🕵️‍♂️💀📓",
     "answer": "Death Note",
     "options": ["Code Geass", "Monster", "Death Note", "Tokyo Ghoul"],
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1bKYCuQ_o9NhMb-rS9eW-8dnYCB4-DmH_hRhABa5-Cg&s=10",
-    "video": "XdJj9nFdfW0"
+    "video": "https://www.youtube.com/watch?v=NlJZ-YgAt-c"
   },
   {
     "id": 5,
+    "type": "emoji",
     "emojis": "☄️🐒🥋🟡🐉",
     "answer": "Dragon Ball",
     "options": ["Dragon Ball", "Naruto", "One Punch Man", "Yu-Gi-Oh!"],
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd5BcDY3Z4RJQgKh7s0_X-wDhlhL-7ofLfrD-oWudcvQ&s=10",
-    "video": "O7L_A6K7_L4"
+    "video": "https://www.youtube.com/watch?v=79ZaRuQtyHw"
   },
   {
     "id": 6,
+    "type": "emoji",
     "emojis": "🧱🦖🗡️🩸🕊️",
     "answer": "Attack on Titan",
     "options": ["Fullmetal Alchemist", "Attack on Titan", "Neon Genesis Evangelion", "Vinland Saga"],
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5dcxR3i6uybbb6m0fEV2F74NJv-eX42t08XxZ0dDqiw&s=10",
-    "video": "8OkpRKIP344"
+    "video": "https://www.youtube.com/watch?v=T3apJUubSeE"
   },
   {
     "id": 7,
+    "type": "emoji",
     "emojis": "🏫🦸‍♂️💥🥦🔥",
     "answer": "My Hero Academia",
     "options": ["Assassination Classroom", "Mob Psycho 100", "My Hero Academia", "Black Clover"],
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6R4qbLGU03ze2Tu1URPSqcklZGeQoZ7YJBKxPJPb4mA&s=10",
-    "video": "yM7Uv_oD9ic"
+    "video": "https://www.youtube.com/watch?v=GJNYSWR-oL8"
   },
   {
     "id": 8,
+    "type": "emoji",
     "emojis": "🤞🕶️😈🏫📿",
     "answer": "Jujutsu Kaisen",
     "options": ["Jujutsu Kaisen", "Chainsaw Man", "Bleach", "Tokyo Ghoul"],
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzDlw5A217c10ne53n7I2-B8i01gWUZArc_vqGDXDwcg&s=10",
-    "video": "1t_SMLIymSg"
+    "video": "https://www.youtube.com/watch?v=odN1NT_9Tm0&list=RDodN1NT_9Tm0&start_radio=1"
   },
   {
     "id": 9,
+    "type": "emoji",
     "emojis": "🎣⚡🐜🃏🎲",
     "answer": "Hunter x Hunter",
     "options": ["Yu Yu Hakusho", "Hunter x Hunter", "One Piece", "Fairy Tail"],
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Q9ewOIKkv8ncSRTEU9vZXZYr_RNP1iKJCINdo9jKJw&s=10",
-    "video": "faqmNMaz_S0"
+    "video": "https://www.youtube.com/watch?v=2ZdLNsLJRdw"
   },
   {
     "id": 10,
+    "type": "emoji",
     "emojis": "🐖🐉🐉⛩️♨️",
     "answer": "Spirited Away",
     "options": ["My Neighbor Totoro", "Howl's Moving Castle", "Princess Mononoke", "Spirited Away"],
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKr83uM8RZl2Hkh_e6Mk-4kgdScnv5X78K2RrzZ0WN-Q&s=10",
-    "video": "ByXuk9QqQkk"
+    "video": "https://www.youtube.com/watch?v=ByXuk9QqQkk"
+  },
+  {
+    "id": 11,
+    "type": "character",
+    "questionMN": "Зураг дээрх анимений баатар хэн бэ?",
+    "questionEN": "Who is the anime character in the picture?",
+    "answer": "Monkey D. Luffy",
+    "options": ["Roronoa Zoro", "Monkey D. Luffy", "Vinsmoke Sanji", "Portgas D. Ace"],
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_D6N44YfCqf_41W2U76n48X-E51uIuE1Wrg&s=10",
+    "video": "https://www.youtube.com/watch?v=S-XxKVxZ2fU"
+  },
+  {
+    "id": 12,
+    "type": "character",
+    "questionMN": "Зураг дээрх анимений баатар хэн бэ?",
+    "questionEN": "Who is the anime character in the picture?",
+    "answer": "Naruto Uzumaki",
+    "options": ["Sasuke Uchiha", "Kakashi Hatake", "Naruto Uzumaki", "Jiraiyas"],
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQqd74f9BY40VnFFdvzQCOTxE-m3SeqS81BGXm2BsHQw&s=10",
+    "video": "https://www.youtube.com/watch?v=uog0drUjg9U&t=69s"
+  },
+  {
+    "id": 13,
+    "type": "character",
+    "questionMN": "Зураг дээрх анимений баатар хэн бэ?",
+    "questionEN": "Who is the anime character in the picture?",
+    "answer": "Kamado Tanjiro",
+    "options": ["Agatsuma Zenitsu", "Kamado Tanjiro", "Hashibira Inosuke", "Tomoka Giyu"],
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzZ8T7gZl7nZ_CgB_zS-0XN54S2bVb6wP3wA&s=10",
+    "video": "https://www.youtube.com/watch?v=x7uLutVRBfI"
+  },
+  {
+    "id": 14,
+    "type": "character",
+    "questionMN": "Зураг дээрх анимений баатар хэн бэ?",
+    "questionEN": "Who is the anime character in the picture?",
+    "answer": "Son Goku",
+    "options": ["Vegeta", "Son Gohan", "Trunks", "Son Goku"],
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd5BcDY3Z4RJQgKh7s0_X-wDhlhL-7ofLfrD-oWudcvQ&s=10",
+    "video": "https://www.youtube.com/watch?v=sxufB6DxXk0"
+  },
+  {
+    "id": 15,
+    "type": "character",
+    "questionMN": "Зураг дээрх анимений баатар хэн бэ?",
+    "questionEN": "Who is the anime character in the picture?",
+    "answer": "Gojo Satoru",
+    "options": ["Itadori Yuji", "Fushiguro Megumi", "Gojo Satoru", "Nanami Kento"],
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzDlw5A217c10ne53n7I2-B8i01gWUZArc_vqGDXDwcg&s=10",
+    "video": "https://www.youtube.com/watch?v=5yb2N3pnztU&list=RD5yb2N3pnztU&start_radio=1"
+  },
+  {
+    "id": 16,
+    "type": "character",
+    "questionMN": "Зураг дээрх анимений баатар хэн бэ?",
+    "questionEN": "Who is the anime character in the picture?",
+    "answer": "Eren Yeager",
+    "options": ["Armin Arlert", "Levi Ackerman", "Eren Yeager", "Erwin Smith"],
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5dcxR3i6uybbb6m0fEV2F74NJv-eX42t08XxZ0dDqiw&s=10",
+    "video": "https://www.youtube.com/watch?v=T3apJUubSeE&t=31s"
   }
 ]

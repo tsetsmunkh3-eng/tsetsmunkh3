@@ -1,0 +1,68 @@
+{
+  "entities": {
+    "Score": {
+      "title": "Score",
+      "description": "An anime guessing game score submission",
+      "type": "object",
+      "properties": {
+        "playerName": {
+          "type": "string",
+          "description": "The name of the player"
+        },
+        "score": {
+          "type": "integer",
+          "description": "The final score achieved"
+        },
+        "gameType": {
+          "type": "string",
+          "description": "The type of game played"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the score was recorded"
+        },
+        "answers": {
+          "type": "array",
+          "description": "Details of the questions and the user's answers",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "userAnswer": {
+                "type": "string"
+              },
+              "correctAnswer": {
+                "type": "string"
+              },
+              "isCorrect": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "question",
+              "userAnswer",
+              "correctAnswer",
+              "isCorrect"
+            ]
+          }
+        }
+      },
+      "required": [
+        "playerName",
+        "score",
+        "gameType",
+        "createdAt",
+        "answers"
+      ]
+    }
+  },
+  "firestore": {
+    "scores/{scoreId}": {
+      "schema": "Score",
+      "description": "Collection of submitted scores and game statistics"
+    }
+  }
+}
