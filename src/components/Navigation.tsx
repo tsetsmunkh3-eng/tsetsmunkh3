@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, Globe, Map, Sparkles, BookOpen, User, Trophy, Gamepad2 } from 'lucide-react';
+import { Menu, X, Globe, Map, Sparkles, BookOpen, User, Trophy, Gamepad2, Keyboard } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface NavigationProps {
@@ -10,7 +10,7 @@ export default function Navigation({ onOpenIdolChat }: NavigationProps) {
   const [activeTab, setActiveTab] = useState('Course');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navItems = ['Course', 'Field Guides', 'Geology', 'Plans', 'Live Tour', '🎮 Games', '🤖 My Idol'];
+  const navItems = ['Course', 'Field Guides', 'Geology', 'Plans', 'Live Tour', '🎮 Games', '🤖 My Idol', '⌨️ Typeracer'];
 
   return (
     <>
@@ -48,6 +48,8 @@ export default function Navigation({ onOpenIdolChat }: NavigationProps) {
                   } else if (item === '🎮 Games') {
                     setActiveTab(item);
                     document.getElementById('lithos-games-section')?.scrollIntoView({ behavior: 'smooth' });
+                  } else if (item === '⌨️ Typeracer') {
+                    window.open('https://typeracer32.vercel.app/', '_blank', 'noopener,noreferrer');
                   } else {
                     setActiveTab(item);
                     document.getElementById('lithos-explorer-section')?.scrollIntoView({ behavior: 'smooth' });
@@ -116,6 +118,7 @@ export default function Navigation({ onOpenIdolChat }: NavigationProps) {
                   item === 'Plans' ? Sparkles :
                   item === '🎮 Games' ? Gamepad2 :
                   item === '🤖 My Idol' ? Trophy :
+                  item === '⌨️ Typeracer' ? Keyboard :
                   Globe;
 
                 return (
@@ -131,6 +134,8 @@ export default function Navigation({ onOpenIdolChat }: NavigationProps) {
                       } else if (item === '🎮 Games') {
                         setActiveTab(item);
                         document.getElementById('lithos-games-section')?.scrollIntoView({ behavior: 'smooth' });
+                      } else if (item === '⌨️ Typeracer') {
+                        window.open('https://typeracer32.vercel.app/', '_blank', 'noopener,noreferrer');
                       } else {
                         setActiveTab(item);
                         document.getElementById('lithos-explorer-section')?.scrollIntoView({ behavior: 'smooth' });
