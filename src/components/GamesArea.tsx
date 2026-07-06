@@ -1306,9 +1306,22 @@ export default function GamesArea() {
                               </h4>
                             </>
                           ) : (
-                            <h4 className="text-white text-base sm:text-xl font-medium leading-relaxed max-w-[90%] font-sans py-4">
-                              {lang === 'mn' ? activeList[currentQIdx]?.questionMN : activeList[currentQIdx]?.questionEN}
-                            </h4>
+                            <>
+                              {activeList[currentQIdx]?.image && (
+                                <div className="relative group mb-3">
+                                  <div className="absolute -inset-0.5 bg-gradient-to-r from-[#e8702a] to-amber-500 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-300 animate-pulse-slow"></div>
+                                  <img 
+                                    src={activeList[currentQIdx]?.image} 
+                                    className="relative w-36 h-36 sm:w-44 sm:h-44 object-cover rounded-2xl border border-zinc-800 shadow-xl select-none" 
+                                    alt="trivia clue" 
+                                    referrerPolicy="no-referrer" 
+                                  />
+                                </div>
+                              )}
+                              <h4 className="text-white text-base sm:text-xl font-medium leading-relaxed max-w-[90%] font-sans py-2">
+                                {lang === 'mn' ? activeList[currentQIdx]?.questionMN : activeList[currentQIdx]?.questionEN}
+                              </h4>
+                            </>
                           )}
                         </div>
 
