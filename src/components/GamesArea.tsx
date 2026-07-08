@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Trophy, Flame, Heart, Timer, RotateCcw, Play, CheckCircle2, AlertTriangle, Sparkles, HelpCircle, Gamepad2, Compass, ArrowRight, Award, User, Check, Loader2 } from 'lucide-react';
 import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import { db, handleFirestoreError, OperationType } from '../lib/firebase';
+import ShooterGame from './ShooterGame';
 
 // Web Audio API Synthesizer for high-quality, lightweight arcade game sound effects
 function playSound(type: 'ding' | 'buzz' | 'swish' | 'brick') {
@@ -120,7 +121,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     options: ["Суши (Sushi)", "Рамэн (Ramen)", "Бургер (Burger)", "Такояки (Takoyaki)"],
     answer: "Рамэн (Ramen)",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQqd74f9BY40VnFFdvzQCOTxE-m3SeqS81BGXm2BsHQw&s=10",
-    video: "2duK6O8uGk4"
+    video: "https://www.youtube.com/watch?v=3BzQRzstScw"
   },
   {
     id: 2,
@@ -129,7 +130,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     options: ["Mera Mera no Mi", "Gomu Gomu no Mi", "Ope Ope no Mi", "Hito Hito no Mi"],
     answer: "Gomu Gomu no Mi",
     image: "https://m.media-amazon.com/images/S/pv-target-images/1595dc2f5bd3654d3d263b4fce60780b118bb31ee3af7a9dc9c99f89ba415934._SX1080_FMjpg_.jpg",
-    video: "M10XW0S_qZ0"
+    video: "https://www.youtube.com/watch?v=3Gmo0EXHyKg"
   },
   {
     id: 3,
@@ -138,7 +139,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     options: ["Tanjiro Kamado", "Zenitsu Agatsuma", "Inosuke Hashibira", "Nezuko Kamado"],
     answer: "Tanjiro Kamado",
     image: "https://storage.ghost.io/c/2b/7f/2b7f69fc-a243-4d2f-ae8e-db8312c6653a/content/images/size/w1200/2025/10/Demon-Slayer-en-421-c-1.png",
-    video: "pX899gZpBf8"
+    video: "https://www.youtube.com/watch?v=x7uLutVRBfI"
   },
   {
     id: 4,
@@ -147,7 +148,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     options: ["Rem", "Ryuk", "Sidoh", "Gelus"],
     answer: "Ryuk",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1bKYCuQ_o9NhMb-rS9eW-8dnYCB4-DmH_hRhABa5-Cg&s=10",
-    video: "XdJj9nFdfW0"
+    video: "https://www.youtube.com/watch?v=NlJZ-YgAt-c"
   },
   {
     id: 5,
@@ -156,7 +157,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     options: ["Vegeta", "Gohan", "Goku", "Trunks"],
     answer: "Goku",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd5BcDY3Z4RJQgKh7s0_X-wDhlhL-7ofLfrD-oWudcvQ&s=10",
-    video: "O7L_A6K7_L4"
+    video: "https://www.youtube.com/watch?v=sxufB6DxXk0"
   },
   {
     id: 6,
@@ -165,7 +166,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     options: ["Colossal Titan", "Attack Titan", "Armored Titan", "Beast Titan"],
     answer: "Attack Titan",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5dcxR3i6uybbb6m0fEV2F74NJv-eX42t08XxZ0dDqiw&s=10",
-    video: "8OkpRKIP344"
+    video: "https://www.youtube.com/watch?v=LV-nazLVmgo"
   },
   {
     id: 7,
@@ -174,7 +175,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     options: ["Yuji Itadori", "Megumi Fushiguro", "Satoru Gojo", "Kento Nanami"],
     answer: "Satoru Gojo",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzDlw5A217c10ne53n7I2-B8i01gWUZArc_vqGDXDwcg&s=10",
-    video: "1t_SMLIymSg"
+    video: "https://www.youtube.com/watch?v=HGCsAcFzaFw"
   },
   {
     id: 8,
@@ -183,7 +184,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     options: ["Makoto Shinkai", "Hayao Miyazaki", "Mamoru Hosoda", "Satoshi Kon"],
     answer: "Hayao Miyazaki",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKr83uM8RZl2Hkh_e6Mk-4kgdScnv5X78K2RrzZ0WN-Q&s=10",
-    video: "ByXuk9QqQkk"
+    video: "https://www.youtube.com/watch?v=ByXuk9QqQkk"
   },
   {
     id: 9,
@@ -192,7 +193,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     options: ["One For All", "All For One", "Explosion", "Half-Cold Half-Hot"],
     answer: "One For All",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6R4qbLGU03ze2Tu1URPSqcklZGeQoZ7YJBKxPJPb4mA&s=10",
-    video: "yM7Uv_oD9ic"
+    video: "https://www.youtube.com/watch?v=-77UEct0cZM&list=RD-77UEct0cZM&start_radio=1"
   },
   {
     id: 10,
@@ -201,7 +202,7 @@ const ANIME_TRIVIA_QUESTIONS: Question[] = [
     options: ["Kurapika", "Killua Zoldyck", "Leorio", "Hisoka"],
     answer: "Killua Zoldyck",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Q9ewOIKkv8ncSRTEU9vZXZYr_RNP1iKJCINdo9jKJw&s=10",
-    video: "faqmNMaz_S0"
+    video: "https://www.youtube.com/watch?v=d6kBeJjTGnY"
   }
 ];
 
@@ -325,7 +326,7 @@ const getYouTubeId = (urlOrId: string | undefined): string | null => {
 
 export default function GamesArea() {
   const [lang, setLang] = useState<'mn' | 'en'>('mn');
-  const [activeGame, setActiveGame] = useState<'none' | 'anime' | 'anime-emoji' | 'anime-character' | 'basketball'>('none');
+  const [activeGame, setActiveGame] = useState<'none' | 'anime' | 'anime-emoji' | 'anime-character' | 'basketball' | 'shooter'>('none');
 
   // Leaderboard & Persistent states
   const [activeTab, setActiveTab] = useState<'games' | 'leaderboard'>('games');
@@ -369,6 +370,7 @@ export default function GamesArea() {
   const [highScore, setHighScore] = useState(0);
   const [emojiHighScore, setEmojiHighScore] = useState(0);
   const [characterHighScore, setCharacterHighScore] = useState(0);
+  const [shooterHighScore, setShooterHighScore] = useState(0);
   const [showBonusNotification, setShowBonusNotification] = useState(false);
   const [showReveal, setShowReveal] = useState(false);
 
@@ -394,6 +396,9 @@ export default function GamesArea() {
 
     const savedBbHS = localStorage.getItem('basketball_high_score');
     if (savedBbHS) setBbHighScore(parseInt(savedBbHS));
+
+    const savedShooterHS = localStorage.getItem('shooter_high_score');
+    if (savedShooterHS) setShooterHighScore(parseInt(savedShooterHS));
   }, []);
 
   // Get current game's question list
@@ -505,15 +510,7 @@ export default function GamesArea() {
     setLives(newLives);
     playSound('buzz');
     recordAnswer(lang === 'mn' ? 'Хугацаа дууссан' : 'Timeout', false);
-
-    if (newLives <= 0) {
-      setTimeout(() => {
-        setGameState('gameover');
-        updateAnimeHighScore(score);
-      }, 1500);
-    } else {
-      setShowReveal(true);
-    }
+    setShowReveal(true);
   };
 
   const updateAnimeHighScore = (finalScore: number) => {
@@ -596,15 +593,7 @@ export default function GamesArea() {
       setStreak(0);
       const newLives = lives - 1;
       setLives(newLives);
-
-      if (newLives <= 0) {
-        setTimeout(() => {
-          setGameState('gameover');
-          updateAnimeHighScore(score);
-        }, 1500);
-      } else {
-        setShowReveal(true);
-      }
+      setShowReveal(true);
     }
   };
 
@@ -618,7 +607,11 @@ export default function GamesArea() {
 
   const handleNextClick = () => {
     const activeList = getActiveQuestionsList();
-    if (currentQIdx === activeList.length - 1) {
+    if (lives <= 0) {
+      setGameState('gameover');
+      updateAnimeHighScore(score);
+      setShowReveal(false);
+    } else if (currentQIdx === activeList.length - 1) {
       setGameState('victory');
       const finalScore = score;
       updateAnimeHighScore(finalScore);
@@ -943,7 +936,7 @@ export default function GamesArea() {
               </div>
             </div>
           ) : (
-            <div id="games-selection-grid" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mt-6">
+            <div id="games-selection-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mt-6">
             
             {/* Game 1 Card: Anime Guesser */}
             <motion.div
@@ -1134,6 +1127,53 @@ export default function GamesArea() {
               >
                 <Play size={14} fill="currentColor" />
                 {lang === 'mn' ? 'Сургуулилт хийх' : 'Practice Hoops'}
+              </button>
+            </motion.div>
+
+            {/* Game 5 Card: Galaxy Striker */}
+            <motion.div
+              id="galaxy-striker-card"
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.2 }}
+              className="bg-gradient-to-b from-zinc-900/90 to-zinc-950 border border-zinc-800 hover:border-[#e8702a]/30 rounded-3xl p-8 flex flex-col justify-between h-96 relative overflow-hidden group shadow-xl"
+            >
+              <div className="absolute top-0 right-0 w-40 h-40 bg-[#e8702a]/5 rounded-full blur-3xl pointer-events-none" />
+              
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-12 h-12 rounded-2xl bg-[#e8702a]/10 border border-[#e8702a]/20 flex items-center justify-center text-[#e8702a] font-bold text-xl">
+                    🚀
+                  </div>
+                  <span className="text-[10px] font-mono uppercase bg-zinc-800 text-zinc-400 px-3 py-1 rounded-full border border-zinc-700">
+                    {lang === 'mn' ? 'САНСРЫН БУУДАГЧ' : 'SPACE SHOOTER'}
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[#e8702a] transition-colors">
+                  Galaxy Striker
+                </h3>
+                <p className="text-zinc-400 text-xs font-light leading-relaxed mb-4 line-clamp-3">
+                  {lang === 'mn'
+                    ? 'Ламин Ямалын сансрын довтолгоо 2D тоглоом. Гэрэлтдэг неон бөмбөгийг өшиглөж, сансрын улаан хуудас, шүүгчийн шүгэл дайралтыг сөнөөгөөрэй!'
+                    : 'Lamine Yamal Space Strike 2D Shooter. Kick glowing neon football lasers to smash incoming red cards, whistles, and goalkeeper obstacles!'}
+                </p>
+
+                {/* Score badge */}
+                <div className="text-xs font-mono text-zinc-500 flex items-center gap-1.5 mt-2">
+                  <Trophy size={14} className="text-yellow-500" />
+                  <span>{lang === 'mn' ? 'Дээд оноо:' : 'Best Score:'} <strong className="text-zinc-300">{shooterHighScore}</strong></span>
+                </div>
+              </div>
+
+              <button
+                id="btn-play-shooter"
+                onClick={() => {
+                  setActiveGame('shooter');
+                }}
+                className="w-full mt-6 py-3 bg-[#e8702a]/20 hover:bg-[#e8702a] text-white border border-[#e8702a]/40 hover:border-[#e8702a] rounded-xl font-semibold text-xs transition-all active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 group-hover:scale-[1.01]"
+              >
+                <Play size={14} fill="currentColor" />
+                {lang === 'mn' ? 'Сансарт нисэх' : 'Play Shooter'}
               </button>
             </motion.div>
 
@@ -1330,16 +1370,25 @@ export default function GamesArea() {
                           {activeList[currentQIdx]?.options.map((option) => {
                             const isSelected = selectedAnswer === option;
                             const isCorrectAnswer = option === activeList[currentQIdx]?.answer;
-                            let buttonStyle = "bg-zinc-950 border-zinc-800 text-white hover:border-zinc-600";
+                            let buttonStyle = "bg-zinc-950 border-zinc-800 text-white hover:border-zinc-600 cursor-pointer";
 
-                            if (selectedAnswer !== null) {
+                            if (selectedAnswer === null) {
+                              // Dynamic pure Tailwind hover/scale styles to avoid Framer Motion styles getting "stuck"
+                              if (isEmojiMode) {
+                                buttonStyle += " hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(234,179,8,0.15)] hover:border-yellow-500/50 hover:bg-zinc-900/80";
+                              } else if (isCharacterMode) {
+                                buttonStyle += " hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(168,85,247,0.15)] hover:border-purple-500/50 hover:bg-zinc-900/80";
+                              } else {
+                                buttonStyle += " hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(232,112,42,0.15)] hover:border-[#e8702a]/50 hover:bg-zinc-900/80";
+                              }
+                            } else {
                               if (isSelected) {
                                 buttonStyle = isCorrectAnswer 
-                                  ? "bg-green-500/20 border-green-500 text-green-400 shadow-lg shadow-green-500/10" 
-                                  : "bg-red-500/20 border-red-500 text-red-400 shadow-lg shadow-red-500/10";
+                                  ? "bg-green-500/20 border-green-500 text-green-400 shadow-lg shadow-green-500/10 cursor-not-allowed" 
+                                  : "bg-red-500/20 border-red-500 text-red-400 shadow-lg shadow-red-500/10 cursor-not-allowed";
                               } else if (isCorrectAnswer) {
                                 // Show what the correct answer was on error
-                                buttonStyle = "bg-green-500/10 border-green-500/40 text-green-400/80";
+                                buttonStyle = "bg-green-500/10 border-green-500/40 text-green-400/80 cursor-not-allowed";
                               } else {
                                 buttonStyle = "bg-zinc-950/20 border-zinc-900/60 text-zinc-600 cursor-not-allowed";
                               }
@@ -1350,12 +1399,7 @@ export default function GamesArea() {
                                 key={option}
                                 disabled={selectedAnswer !== null}
                                 onClick={() => handleAnswerSelect(option)}
-                                whileHover={selectedAnswer === null ? {
-                                  scale: 1.03,
-                                  boxShadow: isEmojiMode ? "0 0 15px rgba(234, 179, 8, 0.15)" : isCharacterMode ? "0 0 15px rgba(168, 85, 247, 0.15)" : "0 0 15px rgba(232, 112, 42, 0.15)",
-                                  borderColor: isEmojiMode ? "rgba(234, 179, 8, 0.5)" : isCharacterMode ? "rgba(168, 85, 247, 0.5)" : "rgba(232, 112, 42, 0.5)",
-                                  backgroundColor: "rgba(24, 24, 27, 0.8)"
-                                } : {}}
+                                whileHover={{}}
                                 whileTap={selectedAnswer === null ? { scale: 0.98 } : {}}
                                 animate={isSelected && !isCorrectAnswer ? {
                                   x: [-8, 8, -6, 6, -4, 4, 0]
@@ -1363,10 +1407,10 @@ export default function GamesArea() {
                                   scale: [1, 1.04, 1]
                                 } : {}}
                                 transition={{
-                                  x: { type: "spring", stiffness: 400, damping: 15 },
+                                  x: { duration: 0.4 },
                                   scale: { duration: 0.25 }
                                 }}
-                                className={`w-full py-4 px-5 rounded-xl border text-left text-sm transition-all flex items-center justify-between font-medium cursor-pointer ${buttonStyle}`}
+                                className={`w-full py-4 px-5 rounded-xl border text-left text-sm transition-all flex items-center justify-between font-medium focus:outline-none focus:ring-0 ${buttonStyle}`}
                               >
                                 <span>{option}</span>
                                 {selectedAnswer !== null && isCorrectAnswer && (
@@ -1454,7 +1498,11 @@ export default function GamesArea() {
                                     : 'bg-gradient-to-r from-red-500 to-rose-600 hover:from-rose-600 hover:to-red-500 shadow-red-500/10 hover:shadow-red-500/25'
                                 }`}
                               >
-                                <span>{lang === 'mn' ? 'Дараагийн асуулт' : 'Next Question'}</span>
+                                <span>
+                                  {lives <= 0 
+                                    ? (lang === 'mn' ? 'Үр дүн харах' : 'View Results')
+                                    : (lang === 'mn' ? 'Дараагийн асуулт' : 'Next Question')}
+                                </span>
                                 <ArrowRight size={14} />
                               </button>
                             </div>
@@ -1661,7 +1709,22 @@ export default function GamesArea() {
               </div>
             </div>
           );
-        })() : (
+        })() : activeGame === 'shooter' ? (
+          <div id="shooter-game-console" className="w-full max-w-4xl mx-auto z-10">
+            <ShooterGame
+              lang={lang}
+              highScore={shooterHighScore}
+              onUpdateHighScore={(newScore) => {
+                setShooterHighScore(newScore);
+                localStorage.setItem('shooter_high_score', newScore.toString());
+              }}
+              onBackToLobby={() => setActiveGame('none')}
+              onSaveScore={(gameScore) => {
+                fetchLeaderboard();
+              }}
+            />
+          </div>
+        ) : (
           /* Basketball Shootout Game Console Container */
           <div id="basketball-game-console" className="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 md:p-8 max-w-2xl mx-auto shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 bottom-0 left-0 w-2 bg-gradient-to-b from-[#e8702a] to-[#ff8c42]" />
