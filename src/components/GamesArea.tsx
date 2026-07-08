@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Trophy, Flame, Heart, Timer, RotateCcw, Play, CheckCircle2, AlertTriangle, Sparkles, HelpCircle, Gamepad2, Compass, ArrowRight, Award, User, Check, Loader2 } from 'lucide-react';
 import { collection, addDoc, serverTimestamp, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import { db, handleFirestoreError, OperationType } from '../lib/firebase';
+import { useAuth } from '../context/AuthContext';
 import ShooterGame from './ShooterGame';
 
 // Web Audio API Synthesizer for high-quality, lightweight arcade game sound effects
@@ -325,12 +326,19 @@ const getYouTubeId = (urlOrId: string | undefined): string | null => {
 };
 
 export default function GamesArea() {
+  const { user } = useAuth();
   const [lang, setLang] = useState<'mn' | 'en'>('mn');
   const [activeGame, setActiveGame] = useState<'none' | 'anime' | 'anime-emoji' | 'anime-character' | 'basketball' | 'shooter'>('none');
 
   // Leaderboard & Persistent states
   const [activeTab, setActiveTab] = useState<'games' | 'leaderboard'>('games');
   const [playerName, setPlayerName] = useState(() => localStorage.getItem('player_name') || '');
+
+  useEffect(() => {
+    if (user && user.displayName) {
+      setPlayerName(user.displayName);
+    }
+  }, [user]);
   const [sessionAnswers, setSessionAnswers] = useState<{ question: string; userAnswer: string; correctAnswer: string; isCorrect: boolean }[]>([]);
   const [savingScore, setSavingScore] = useState(false);
   const [scoreSaved, setScoreSaved] = useState(false);

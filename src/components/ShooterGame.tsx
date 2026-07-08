@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Trophy, RotateCcw, Play, Gamepad2, Heart, Award, Shield, Zap, Sparkles, Volume2, VolumeX, ArrowLeft, Loader2, User, Check } from 'lucide-react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../lib/firebase';
+import { useAuth } from '../context/AuthContext';
 
 interface ShooterGameProps {
   lang: 'mn' | 'en';
@@ -120,6 +121,7 @@ const playSynthesizerSound = (type: 'shoot' | 'explosion' | 'powerup' | 'damage'
 };
 
 export default function ShooterGame({ lang, onBackToLobby, onSaveScore, highScore, onUpdateHighScore }: ShooterGameProps) {
+  const { user } = useAuth();
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -133,6 +135,13 @@ export default function ShooterGame({ lang, onBackToLobby, onSaveScore, highScor
   const [powerUpDuration, setPowerUpDuration] = useState(0); // in seconds
 
   const [playerName, setPlayerName] = useState(() => localStorage.getItem('player_name') || '');
+
+  useEffect(() => {
+    if (user && user.displayName) {
+      setPlayerName(user.displayName);
+    }
+  }, [user]);
+
   const [savingScore, setSavingScore] = useState(false);
   const [scoreSaved, setScoreSaved] = useState(false);
 

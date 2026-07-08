@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Menu, X, Globe, Map, Sparkles, BookOpen, User, Trophy, Gamepad2, Keyboard } from 'lucide-react';
+import { Menu, X, Globe, Map, Sparkles, BookOpen, User, Trophy, Gamepad2, Keyboard, LogOut, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useAuth } from '../context/AuthContext';
 
 interface NavigationProps {
   onOpenIdolChat: () => void;
@@ -9,6 +10,8 @@ interface NavigationProps {
 export default function Navigation({ onOpenIdolChat }: NavigationProps) {
   const [activeTab, setActiveTab] = useState('Course');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { user, loginWithGoogle, logout } = useAuth();
 
   const navItems = ['Course', 'Field Guides', 'Geology', 'Plans', 'Live Tour', '🎮 Games', '🤖 My Idol', '⌨️ Typeracer'];
 
@@ -77,13 +80,71 @@ export default function Navigation({ onOpenIdolChat }: NavigationProps) {
 
         {/* Right Side: Desktop Sign Up / Mobile Hamburger Toggle */}
         <div id="nav-right-actions" className="flex items-center gap-3">
-          {/* Desktop Sign Up */}
-          <button
-            id="nav-btn-signup"
-            className="hidden md:block bg-white text-gray-900 text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-gray-100 hover:scale-[1.03] active:scale-95 transition-all shadow-md cursor-pointer"
-          >
-            Sign Up
-          </button>
+          {/* Desktop Sign Up / Profile */}
+          {user ? (
+            <div className="relative hidden md:block">
+              <button
+                id="nav-user-profile-trigger"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-full pl-2 pr-4 py-1.5 transition-all text-sm font-semibold select-none cursor-pointer"
+              >
+                {user.photoURL ? (
+                  <img
+                    src={user.photoURL}
+                    alt={user.displayName || 'User'}
+                    className="w-7 h-7 rounded-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                ) : (
+                  <div className="w-7 h-7 rounded-full bg-[#e8702a] text-white flex items-center justify-center text-xs font-bold">
+                    {user.displayName?.[0] || user.email?.[0] || 'U'}
+                  </div>
+                )}
+                <span className="max-w-[100px] truncate">{user.displayName || 'User'}</span>
+                <ChevronDown size={14} className={`text-white/60 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Dropdown Menu */}
+              <AnimatePresence>
+                {dropdownOpen && (
+                  <>
+                    <div className="fixed inset-0 z-40" onClick={() => setDropdownOpen(false)} />
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute right-0 mt-2 w-56 bg-zinc-950 border border-white/10 rounded-2xl p-2.5 shadow-2xl z-50 flex flex-col gap-1.5"
+                    >
+                      <div className="px-3 py-2 border-b border-white/5 flex flex-col">
+                        <span className="text-white text-sm font-medium truncate">{user.displayName || 'Anonymous User'}</span>
+                        <span className="text-white/40 text-xs truncate">{user.email || 'No email'}</span>
+                      </div>
+                      <button
+                        onClick={async () => {
+                          setDropdownOpen(false);
+                          await logout();
+                        }}
+                        className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-left text-sm text-red-400 hover:bg-red-500/10 transition-colors cursor-pointer"
+                      >
+                        <LogOut size={16} />
+                        <span>Sign Out</span>
+                      </button>
+                    </motion.div>
+                  </>
+                )}
+              </AnimatePresence>
+            </div>
+          ) : (
+            <button
+              id="nav-btn-signup"
+              onClick={() => loginWithGoogle()}
+              className="hidden md:flex items-center gap-2 bg-white text-gray-900 text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-gray-100 hover:scale-[1.03] active:scale-95 transition-all shadow-md cursor-pointer"
+            >
+              <User size={16} />
+              Sign Up
+            </button>
+          )}
 
           {/* Mobile Hamburger Menu Button */}
           <button
@@ -157,17 +218,58 @@ export default function Navigation({ onOpenIdolChat }: NavigationProps) {
 
             <div id="mobile-nav-footer" className="h-[1px] bg-white/10 my-1" />
 
-            <motion.button
-              id="mobile-nav-btn-signup"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: navItems.length * 0.05 }}
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 bg-[#e8702a] text-white py-3.5 rounded-full font-semibold text-sm hover:bg-[#d2611f] active:scale-[0.98] transition-all shadow-lg shadow-[#e8702a]/20"
-            >
-              <User size={16} />
-              Sign Up
-            </motion.button>
+            {user ? (
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-3.5 px-4 py-2">
+                  {user.photoURL ? (
+                    <img
+                      src={user.photoURL}
+                      alt={user.displayName || 'User'}
+                      className="w-10 h-10 rounded-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <div className="w-10 h-10 rounded-full bg-[#e8702a] text-white flex items-center justify-center text-sm font-bold">
+                      {user.displayName?.[0] || user.email?.[0] || 'U'}
+                    </div>
+                  )}
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-white text-sm font-medium truncate">{user.displayName || 'User'}</span>
+                    <span className="text-white/40 text-xs truncate">{user.email || ''}</span>
+                  </div>
+                </div>
+                <button
+                  id="mobile-nav-btn-signout"
+                  onClick={async () => {
+                    await logout();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full flex items-center justify-center gap-2 bg-red-500/10 text-red-400 hover:bg-red-500/20 py-3.5 rounded-full font-semibold text-sm transition-all"
+                >
+                  <LogOut size={16} />
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <motion.button
+                id="mobile-nav-btn-signup"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: navItems.length * 0.05 }}
+                onClick={async () => {
+                  try {
+                    await loginWithGoogle();
+                    setMobileMenuOpen(false);
+                  } catch (e) {
+                    console.error(e);
+                  }
+                }}
+                className="w-full flex items-center justify-center gap-2 bg-[#e8702a] text-white py-3.5 rounded-full font-semibold text-sm hover:bg-[#d2611f] active:scale-[0.98] transition-all shadow-lg shadow-[#e8702a]/20"
+              >
+                <User size={16} />
+                Sign Up
+              </motion.button>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
