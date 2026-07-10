@@ -1,11 +1,23 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { User, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { 
+  User, 
+  onAuthStateChanged, 
+  signInWithPopup, 
+  signOut, 
+  signInAnonymously, 
+  signInWithEmailAndPassword, 
+  createUserWithEmailAndPassword, 
+  updateProfile 
+} from 'firebase/auth';
 import { auth, googleProvider } from '../lib/firebase';
 
 interface AuthContextType {
   user: User | null;
   loading: boolean;
   loginWithGoogle: () => Promise<User | null>;
+  loginAnonymously: (displayName: string) => Promise<User | null>;
+  registerWithEmail: (email: string, password: string, displayName: string) => Promise<User | null>;
+  loginWithEmail: (email: string, password: string) => Promise<User | null>;
   logout: () => Promise<void>;
 }
 
@@ -36,6 +48,59 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const loginAnonymously = async (displayName: string) => {
+    setLoading(true);
+    try {
+      const result = await signInAnonymously(auth);
+      if (result.user) {
+        await updateProfile(result.user, {
+          displayName: displayName.trim() || 'Guest Explorer'
+        });
+        // Force state update by cloning user object
+        setUser({ ...result.user });
+      }
+      return result.user;
+    } catch (error) {
+      console.error('Anonymous Sign-In failed:', error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const registerWithEmail = async (email: string, password: string, displayName: string) => {
+    setLoading(true);
+    try {
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      if (result.user) {
+        await updateProfile(result.user, {
+          displayName: displayName.trim()
+        });
+        // Force state update by cloning user object
+        setUser({ ...result.user });
+      }
+      return result.user;
+    } catch (error) {
+      console.error('Email Registration failed:', error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const loginWithEmail = async (email: string, password: string) => {
+    setLoading(true);
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      return result.user;
+    } catch (error) {
+      console.error('Email Login failed:', error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const logout = async () => {
     setLoading(true);
     try {
@@ -49,7 +114,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, loginWithGoogle, logout }}>
+    <AuthContext.Provider value={{ 
+      user, 
+      loading, 
+      loginWithGoogle, 
+      loginAnonymously, 
+      registerWithEmail, 
+      loginWithEmail, 
+      logout 
+    }}>
       {children}
     </AuthContext.Provider>
   );

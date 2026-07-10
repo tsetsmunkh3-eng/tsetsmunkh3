@@ -17,6 +17,7 @@ import ExplorerSection from './components/ExplorerSection';
 import GamesArea from './components/GamesArea';
 import IdolChat from './components/IdolChat';
 import MeChat from './components/MeChat';
+import AuthModal from './components/AuthModal';
 
 // Asset URLs exactly as specified
 const BG_IMAGE_1 = 'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260609_195923_b0ba8ace-1d1d-4f2c-9a28-1ab84b330680.png&w=1280&q=85';
@@ -33,6 +34,7 @@ export default function App() {
 
   // State for AI chatbots
   const [isIdolChatOpen, setIsIdolChatOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   useEffect(() => {
     // Mouse listener
@@ -102,7 +104,10 @@ export default function App() {
       style={{ fontFamily: "'Inter', sans-serif" }}
     >
       {/* Premium Fixed Top Navigation bar */}
-      <Navigation onOpenIdolChat={() => setIsIdolChatOpen(true)} />
+      <Navigation 
+        onOpenIdolChat={() => setIsIdolChatOpen(true)} 
+        onOpenAuthModal={() => setIsAuthModalOpen(true)}
+      />
 
       {/* Main Hero Section */}
       <section
@@ -164,6 +169,9 @@ export default function App() {
       {/* Interactive Chat Dialogs */}
       <IdolChat isOpen={isIdolChatOpen} onClose={() => setIsIdolChatOpen(false)} />
       <MeChat />
+
+      {/* Authentication Modal */}
+      <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </div>
   );
 }

@@ -5,13 +5,14 @@ import { useAuth } from '../context/AuthContext';
 
 interface NavigationProps {
   onOpenIdolChat: () => void;
+  onOpenAuthModal: () => void;
 }
 
-export default function Navigation({ onOpenIdolChat }: NavigationProps) {
+export default function Navigation({ onOpenIdolChat, onOpenAuthModal }: NavigationProps) {
   const [activeTab, setActiveTab] = useState('Course');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const { user, loginWithGoogle, logout } = useAuth();
+  const { user, logout } = useAuth();
 
   const navItems = ['Course', 'Field Guides', 'Geology', 'Plans', 'Live Tour', '🎮 Games', '🤖 My Idol', '⌨️ Typeracer'];
 
@@ -138,7 +139,7 @@ export default function Navigation({ onOpenIdolChat }: NavigationProps) {
           ) : (
             <button
               id="nav-btn-signup"
-              onClick={() => loginWithGoogle()}
+              onClick={() => onOpenAuthModal()}
               className="hidden md:flex items-center gap-2 bg-white text-gray-900 text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-gray-100 hover:scale-[1.03] active:scale-95 transition-all shadow-md cursor-pointer"
             >
               <User size={16} />
@@ -256,13 +257,9 @@ export default function Navigation({ onOpenIdolChat }: NavigationProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: navItems.length * 0.05 }}
-                onClick={async () => {
-                  try {
-                    await loginWithGoogle();
-                    setMobileMenuOpen(false);
-                  } catch (e) {
-                    console.error(e);
-                  }
+                onClick={() => {
+                  onOpenAuthModal();
+                  setMobileMenuOpen(false);
                 }}
                 className="w-full flex items-center justify-center gap-2 bg-[#e8702a] text-white py-3.5 rounded-full font-semibold text-sm hover:bg-[#d2611f] active:scale-[0.98] transition-all shadow-lg shadow-[#e8702a]/20"
               >
